@@ -45,9 +45,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
         .subscribe(
           (res) => {
             if (res.Result.Status) {
-              this.router.navigate(['/']);
+              this.router.navigate(['/login']).then(() => {
+                this.toastr.success(
+                  'Registration successful. Please login with your account.'
+                );
+              });
             } else {
-              this.toastr.error('Wrong email or password!');
+              this.toastr.error(res.Result.Message);
             }
           },
           (err) => {
@@ -55,7 +59,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
           }
         );
     } else {
-      this.toastr.error('Hello world!', 'Toastr fun!');
+      this.toastr.error('Invalid value entered!');
     }
   }
 

@@ -30,6 +30,7 @@ export class AuthService {
   }
 
   register(username: string, password: string, email: string) {
+    // return this.http.get<UserLoginDto>(environment.medicalAppApi + '/Response');//, this.httpOptions)
     return this.http.post<UserRegisterDto>(
       environment.medicalAppApi + '/Authentication/register',
       { username, password, email },

@@ -2,7 +2,7 @@ import { NotificationDto } from './NotificationDto';
 
 export interface UserLoginDto {
   Notification: NotificationDto[];
-  Result: UserLoginDto;
+  Result: UserLoginResult;
 }
 
 export interface UserLoginResult {
