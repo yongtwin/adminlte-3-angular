@@ -18,7 +18,7 @@ export class AppService {
   login(username: string, password: string) {
     // return this.http.post<any>(environment.medicalAppApi + '/Authentication/login', { username, password }, this.httpOptions)
     return this.http
-      .get<any>(environment.medicalAppApi + '/Result') //, this.httpOptions)
+      .get<any>(environment.medicalAppApi + '/Result')
       .subscribe((res: any) => {
         localStorage.setItem('token', res.JwtToken);
         this.router.navigate(['/']);

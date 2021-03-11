@@ -32,10 +32,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   register() {
-    let val = this.registerForm.value;
+    const val = this.registerForm.value;
 
     if (this.registerForm.valid) {
-      if (val.password != val.retypePassword) {
+      if (val.password !== val.retypePassword) {
         this.toastr.error('Password and Retype Password not same!');
         return;
       }
@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         .register(val.username, val.password, val.email)
         .subscribe(
           (res) => {
-            if (res.Result.status) {
+            if (res.Result.Status) {
               this.router.navigate(['/']);
             } else {
               this.toastr.error('Wrong email or password!');
