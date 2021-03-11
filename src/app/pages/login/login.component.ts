@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
-import { AppService } from '../../utils/services/app.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../utils/services/auth.service';
+import { Router } from '@angular/router';
+import { TokenStorageService } from '../../utils/services/TokenStorage.service';
 
 @Component({
   selector: 'app-login',
@@ -13,8 +15,10 @@ export class LoginComponent implements OnInit, OnDestroy {
   public isAuthLoading = false;
   constructor(
     private renderer: Renderer2,
+    private router: Router,
     private toastr: ToastrService,
-    private appService: AppService
+    private authService: AuthService,
+    private tokenStorageService: TokenStorageService
   ) {}
 
   ngOnInit() {
@@ -26,10 +30,24 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login() {
+    const val = this.loginForm.value;
+
     if (this.loginForm.valid) {
-      this.appService.login();
+      this.authService.login(val.email, val.password).subscribe(
+        (res) => {
+          if (res.Result.status) {
+            this.tokenStorageService.saveToken(res.Result.JwtToken);
+            this.router.navigate(['/']);
+          } else {
+            this.toastr.error('Wrong email or password!');
+          }
+        },
+        (err) => {
+          this.toastr.error(err.statusText);
+        }
+      );
     } else {
-      this.toastr.error('Hello world!', 'Toastr fun!');
+      this.toastr.error('Invalid email or password!');
     }
   }
 

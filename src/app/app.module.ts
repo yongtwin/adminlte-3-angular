@@ -24,6 +24,8 @@ import { registerLocaleData } from '@angular/common';
 import localeEn from '@angular/common/locales/en';
 import { UserDropdownMenuComponent } from './pages/main/header/user-dropdown-menu/user-dropdown-menu.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
@@ -54,6 +56,7 @@ registerLocaleData(localeEn, 'en-EN');
       preventDuplicates: true,
     }),
     NgbModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
