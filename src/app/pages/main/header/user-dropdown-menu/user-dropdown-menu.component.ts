@@ -7,6 +7,9 @@ import {
   Renderer2,
 } from '@angular/core';
 import { AppService } from 'src/app/utils/services/app.service';
+import { TokenStorageService } from 'src/app/utils/services/TokenStorage.service';
+import { Router, RouterStateSnapshot } from '@angular/router';
+import { AuthService } from 'src/app/utils/services/auth.service';
 
 @Component({
   selector: 'app-user-dropdown-menu',
@@ -27,7 +30,10 @@ export class UserDropdownMenuComponent implements OnInit {
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private appService: AppService
+    private appService: AppService,
+    private tokenStorageService: TokenStorageService,
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +57,8 @@ export class UserDropdownMenuComponent implements OnInit {
   }
 
   logout() {
-    this.appService.logout();
+    this.tokenStorageService.signOut();
+    this.authService.userLoggedIn = false;
+    this.router.navigate(['/login']);
   }
 }

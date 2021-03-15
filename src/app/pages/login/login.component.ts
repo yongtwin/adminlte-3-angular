@@ -37,9 +37,10 @@ export class LoginComponent implements OnInit, OnDestroy {
         (res) => {
           if (res.Result.status) {
             this.tokenStorageService.saveToken(res.Result.JwtToken);
+            this.authService.userLoggedIn = true;
             this.router.navigate(['/']);
           } else {
-            this.toastr.error('Wrong email or password!');
+            this.toastr.error(res.Result.message);
           }
         },
         (err) => {

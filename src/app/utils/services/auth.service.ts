@@ -8,14 +8,14 @@ import { UserRegisterDto } from '../../models/Dtos/UserRegisterDto';
   providedIn: 'root',
 })
 export class AuthService {
-  public user = {
-    firstName: 'Alexander',
-    lastName: 'Pierce',
-    image: 'assets/img/user2-160x160.jpg',
-  };
+  public user = null;
+  public userLoggedIn = false;
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+    }),
   };
 
   constructor(private http: HttpClient) {}
@@ -26,11 +26,9 @@ export class AuthService {
       { username, password },
       this.httpOptions
     );
-    // return this.http.get<UserDto>(environment.medicalAppApi + '/Result');//, this.httpOptions)
   }
 
   register(username: string, password: string, email: string) {
-    // return this.http.get<UserLoginDto>(environment.medicalAppApi + '/Response');//, this.httpOptions)
     return this.http.post<UserRegisterDto>(
       environment.medicalAppApi + '/Authentication/register',
       { username, password, email },
