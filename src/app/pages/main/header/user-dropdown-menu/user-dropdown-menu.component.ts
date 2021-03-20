@@ -7,7 +7,7 @@ import {
   Renderer2,
 } from '@angular/core';
 import { AppService } from 'src/app/utils/services/app.service';
-import { TokenStorageService } from 'src/app/utils/services/TokenStorage.service';
+import { TokenStorageService } from 'src/app/utils/services/tokenStorage.service';
 import { Router, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from 'src/app/utils/services/auth.service';
 
@@ -17,15 +17,9 @@ import { AuthService } from 'src/app/utils/services/auth.service';
   styleUrls: ['./user-dropdown-menu.component.scss'],
 })
 export class UserDropdownMenuComponent implements OnInit {
-  public user;
-
   @ViewChild('dropdownMenu', { static: false }) dropdownMenu;
-  @HostListener('document:click', ['$event'])
-  clickout(event) {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
-      this.hideDropdownMenu();
-    }
-  }
+
+  public user;
 
   constructor(
     private elementRef: ElementRef,
@@ -35,6 +29,13 @@ export class UserDropdownMenuComponent implements OnInit {
     private router: Router,
     private authService: AuthService
   ) {}
+
+  @HostListener('document:click', ['$event'])
+  clickout(event) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.hideDropdownMenu();
+    }
+  }
 
   ngOnInit(): void {
     this.user = this.appService.user;

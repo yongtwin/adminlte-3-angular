@@ -13,7 +13,11 @@ import {
   styleUrls: ['./notifications-dropdown-menu.component.scss'],
 })
 export class NotificationsDropdownMenuComponent implements OnInit {
-  @ViewChild('dropdownMenu', { static: false }) dropdownMenu;
+  @ViewChild('dropdownMenu', { static: false }) dropdownMenu: {
+    nativeElement: { classList: { contains: (arg0: string) => any } };
+  };
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('document:click', ['$event'])
   clickout(event) {
@@ -21,8 +25,6 @@ export class NotificationsDropdownMenuComponent implements OnInit {
       this.hideDropdownMenu();
     }
   }
-
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {}
 

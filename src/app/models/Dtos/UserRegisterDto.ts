@@ -1,11 +1,11 @@
 import { NotificationDto } from './NotificationDto';
 
 export interface UserRegisterDto {
-  Notification: NotificationDto[];
-  Result: UserRegisterResult;
+  notification: NotificationDto[];
+  result: UserRegisterResult;
 }
 
 export interface UserRegisterResult {
-  Status: string;
-  Message: string;
+  status: string;
+  message: string;
 }

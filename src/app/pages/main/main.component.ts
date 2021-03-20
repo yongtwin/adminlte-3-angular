@@ -6,8 +6,9 @@ import { Component, OnInit, Renderer2, ViewChild } from '@angular/core';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  public sidebarMenuOpened = true;
   @ViewChild('contentWrapper', { static: false }) contentWrapper;
+
+  public sidebarMenuOpened = true;
 
   constructor(private renderer: Renderer2) {}
 

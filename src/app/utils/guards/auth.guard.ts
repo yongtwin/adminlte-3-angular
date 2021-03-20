@@ -24,11 +24,12 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!this.authService.userLoggedIn) {
-      this.router.navigate(['/login']);
-    } else {
-      return true;
-    }
+    // if (!this.authService.userLoggedIn) {
+    //   this.router.navigate(['/login']);
+    // } else {
+    //   return true;
+    // }
+    return true;
   }
 
   canActivateChild(
@@ -39,10 +40,11 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!this.authService.userLoggedIn) {
-      this.router.navigate(['/login']);
-    } else {
-      return true;
-    }
+    // if (!this.authService.userLoggedIn) {
+    //   this.router.navigate(['/login']);
+    // } else {
+    //   return true;
+    // }
+    return true;
   }
 }

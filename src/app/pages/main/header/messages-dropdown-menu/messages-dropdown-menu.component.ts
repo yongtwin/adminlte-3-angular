@@ -15,14 +15,14 @@ import {
 export class MessagesDropdownMenuComponent implements OnInit {
   @ViewChild('dropdownMenu', { static: false }) dropdownMenu;
 
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+
   @HostListener('document:click', ['$event'])
   clickout(event) {
     if (!this.elementRef.nativeElement.contains(event.target)) {
       this.hideDropdownMenu();
     }
   }
-
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {}
 

@@ -2,7 +2,7 @@ import { Component, OnInit, Renderer2, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../utils/services/auth.service';
-import { TokenStorageService } from '../../utils/services/TokenStorage.service';
+import { TokenStorageService } from '../../utils/services/tokenStorage.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private toastr: ToastrService,
     private authService: AuthService,
-    private tokenStorageService: TokenStorageService,
     private router: Router
   ) {}
 
@@ -44,14 +43,14 @@ export class RegisterComponent implements OnInit, OnDestroy {
         .register(val.username, val.password, val.email)
         .subscribe(
           (res) => {
-            if (res.Result.Status) {
+            if (res.result.status) {
               this.router.navigate(['/login']).then(() => {
                 this.toastr.success(
                   'Registration successful. Please login with your account.'
                 );
               });
             } else {
-              this.toastr.error(res.Result.Message);
+              this.toastr.error(res.result.message);
             }
           },
           (err) => {

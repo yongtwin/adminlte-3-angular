@@ -6,7 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ProfileComponent } from './views/profile/profile.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { UserProfileComponent } from './views/userprofile/UserProfile.component';
+import { UserProfileComponent } from './views/UserProfile/UserProfile.component';
 import { AuthGuard } from './utils/guards/auth.guard';
 import { NonAuthGuard } from './utils/guards/non-auth.guard';
 

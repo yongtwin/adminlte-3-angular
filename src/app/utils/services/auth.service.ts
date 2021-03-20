@@ -13,8 +13,8 @@ export class AuthService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
+      'content-type': 'application/json',
+      'access-control-allow-origin': '*',
     }),
   };
 
@@ -32,6 +32,18 @@ export class AuthService {
     return this.http.post<UserRegisterDto>(
       environment.medicalAppApi + '/Authentication/register',
       { username, password, email },
+      this.httpOptions
+    );
+  }
+
+  changePassword(
+    currentPassword: string,
+    newPassword: string,
+    confirmPassword: string
+  ) {
+    return this.http.post<any>(
+      environment.medicalAppApi + '/Authentication/ChangePassword',
+      { currentPassword, newPassword, confirmPassword },
       this.httpOptions
     );
   }

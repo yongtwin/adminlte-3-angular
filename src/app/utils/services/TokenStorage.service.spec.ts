@@ -1,7 +1,7 @@
-/* tslint:disable:no-unused-variable */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { TokenStorageService } from './TokenStorage.service';
+import { TokenStorageService } from './tokenStorage.service';
 
 describe('Service: TokenStorage', () => {
   beforeEach(() => {

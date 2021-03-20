@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../utils/services/auth.service';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../utils/services/TokenStorage.service';
+import { UserLoginDto } from 'src/app/models/Dtos/UserLoginDto';
 
 @Component({
   selector: 'app-login',
@@ -35,12 +36,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (this.loginForm.valid) {
       this.authService.login(val.email, val.password).subscribe(
         (res) => {
-          if (res.Result.status) {
-            this.tokenStorageService.saveToken(res.Result.JwtToken);
+          if (res.result.status) {
+            this.tokenStorageService.saveToken(res.result.jwtToken);
             this.authService.userLoggedIn = true;
             this.router.navigate(['/']);
           } else {
-            this.toastr.error(res.Result.message);
+            this.toastr.error(res.result.message);
           }
         },
         (err) => {

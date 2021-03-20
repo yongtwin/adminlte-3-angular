@@ -6,7 +6,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 
-import { TokenStorageService } from '../../utils/services/TokenStorage.service';
+import { TokenStorageService } from '../services/tokenStorage.service';
 import { Observable } from 'rxjs';
 
 const TOKEN_HEADER_KEY = 'Authorization'; // for Spring Boot back-end
