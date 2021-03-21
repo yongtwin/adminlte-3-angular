@@ -27,6 +27,8 @@ import { UserDropdownMenuComponent } from './pages/main/header/user-dropdown-men
 import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './views/UserProfile/UserProfile.component';
 
+import { authInterceptorProviders } from './utils/helpers/auth.interceptor';
+
 registerLocaleData(localeEn, 'en-EN');
 
 @NgModule({
@@ -60,7 +62,7 @@ registerLocaleData(localeEn, 'en-EN');
     NgbModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
