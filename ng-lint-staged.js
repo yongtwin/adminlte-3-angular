@@ -13,12 +13,9 @@ const files = process.argv
   })
   .join(' ');
 
-exec(
-  `npm run ${script} -- --tsConfig=tsconfig.json ${files}`,
-  (error, stdout) => {
-    if (error) {
-      console.log(error);
-      process.exit(1);
-    }
+exec(`npm run ${script} --tsConfig=tsconfig.json ${files}`, (error, stdout) => {
+  if (error) {
+    console.log(error);
+    process.exit(1);
   }
-);
+});
