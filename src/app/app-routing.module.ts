@@ -9,6 +9,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { UserProfileComponent } from './views/UserProfile/UserProfile.component';
 import { AuthGuard } from './utils/guards/auth.guard';
 import { NonAuthGuard } from './utils/guards/non-auth.guard';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+    canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
     canActivate: [NonAuthGuard],
   },
   { path: '**', redirectTo: '' },

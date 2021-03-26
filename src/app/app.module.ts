@@ -9,7 +9,7 @@ import { HeaderComponent } from './pages/main/header/header.component';
 import { FooterComponent } from './pages/main/footer/footer.component';
 import { MenuSidebarComponent } from './pages/main/menu-sidebar/menu-sidebar.component';
 import { BlankComponent } from './views/blank/blank.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './views/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './pages/register/register.component';
@@ -28,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserProfileComponent } from './views/UserProfile/UserProfile.component';
 
 import { authInterceptorProviders } from './utils/helpers/auth.interceptor';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 registerLocaleData(localeEn, 'en-EN');
 
@@ -48,6 +49,7 @@ registerLocaleData(localeEn, 'en-EN');
     AppButtonComponent,
     UserDropdownMenuComponent,
     UserProfileComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ registerLocaleData(localeEn, 'en-EN');
     }),
     NgbModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent],

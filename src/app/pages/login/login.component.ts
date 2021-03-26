@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../utils/services/auth.service';
 import { Router } from '@angular/router';
 import { TokenStorageService } from '../../utils/services/TokenStorage.service';
-import { UserLoginDto } from 'src/app/models/Dtos/UserLoginDto';
 
 @Component({
   selector: 'app-login',

@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserLoginDto } from '../../models/Dtos/UserLoginDto';
 import { UserRegisterDto } from '../../models/Dtos/UserRegisterDto';
+import { UserResetPasswordDto } from 'src/app/models/Dtos/UserResetPasswordDto';
 
 @Injectable({
   providedIn: 'root',
@@ -44,6 +45,16 @@ export class AuthService {
     return this.http.post<any>(
       environment.medicalAppApi + '/Authentication/ChangePassword',
       { currentPassword, newPassword, confirmPassword },
+      this.httpOptions
+    );
+  }
+
+  resetPassword(username: string) {
+    return this.http.post<UserResetPasswordDto>(
+      environment.medicalAppApi +
+        '/Authentication/ResetPassword?userName=' +
+        username,
+      {},
       this.httpOptions
     );
   }
