@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.renderer.addClass(document.querySelector('app-root'), 'login-page');
     this.loginForm = new FormGroup({
-      email: new FormControl(null, Validators.required),
+      username: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required),
     });
   }
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     const val = this.loginForm.value;
 
     if (this.loginForm.valid) {
-      this.authService.login(val.email, val.password).subscribe(
+      this.authService.login(val.username, val.password).subscribe(
         (res) => {
           if (res.result.status) {
             this.tokenStorageService.saveToken(res.result.jwtToken);

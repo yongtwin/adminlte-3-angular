@@ -1,6 +1,6 @@
 <div class="login-box">
   <div class="login-logo">
-    <a [routerLink]="['/']"><b>Admin</b>LTE</a>
+    <a [routerLink]="['/']"><b>Medical Application</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -10,14 +10,14 @@
       <form [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="input-group mb-3">
           <input
-            formControlName="email"
-            type="email"
+            formControlName="username"
+            type="text"
             class="form-control"
-            placeholder="Email"
+            placeholder="Username"
           />
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-envelope"></span>
+              <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
@@ -35,14 +35,6 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-7">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember" />
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
           <!-- /.col -->
           <div class="col-5">
             <app-button
@@ -55,17 +47,6 @@
           <!-- /.col -->
         </div>
       </form>
-
-      <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>
-      <!-- /.social-auth-links -->
 
       <p class="mb-1">
         <a [routerLink]="['/forgot-password']">I forgot my password</a>
